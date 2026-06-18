@@ -65,11 +65,11 @@ async function buildConfig(
         }
     };
 
-    const name = isWarp ? `💦 Warp ${isPro ? "Pro " : ""}- Best Ping 🚀` : "💦 Best Ping 🚀";
+    const name = isWarp ? `⚡ Warp ${isPro ? "Pro " : ""}- Best Ping 🚀` : "⚡ Best Ping 🚀";
     const mainUrlTest = buildUrlTest(name, proxyTags, isWarp);
     config["proxy-groups"].push(mainUrlTest);
-    if (isWarp) config["proxy-groups"].push(buildUrlTest(`💦 WoW ${isPro ? "Pro " : ""}- Best Ping 🚀`, chainTags, isWarp));
-    if (isChain) config["proxy-groups"].push(buildUrlTest("💦 🔗 Best Ping 🚀", chainTags, isWarp));
+    if (isWarp) config["proxy-groups"].push(buildUrlTest(`⚡ WoW ${isPro ? "Pro " : ""}- Best Ping 🚀`, chainTags, isWarp));
+    if (isChain) config["proxy-groups"].push(buildUrlTest("⚡ 🔗 Best Ping 🚀", chainTags, isWarp));
 
     return config;
 }
@@ -89,7 +89,7 @@ export async function getClNormalConfig(): Promise<Response> {
     const proxyTags: string[] = [];
     const chainTags: string[] = [];
     const outbounds: Outbound[] = [];
-    const selectorTags = ["💦 Best Ping 🚀"].concatIf(isChain, "💦 🔗 Best Ping 🚀");
+    const selectorTags = ["⚡ Best Ping 🚀"].concatIf(isChain, "⚡ 🔗 Best Ping 🚀");
 
     for (const protocol of protocols) {
         let protocolIndex = 1;
@@ -151,15 +151,15 @@ export async function getClWarpConfig(request: Request, env: Env, isPro: boolean
     const outbounds: WireguardOutbound[] = [];
     const proSign = isPro ? "Pro " : "";
     const selectorTags = [
-        `💦 Warp ${proSign}- Best Ping 🚀`,
-        `💦 WoW ${proSign}- Best Ping 🚀`
+        `⚡ Warp ${proSign}- Best Ping 🚀`,
+        `⚡ WoW ${proSign}- Best Ping 🚀`
     ];
 
     warpEndpoints.forEach((endpoint, index) => {
-        const warpTag = `💦 ${index + 1} - Warp ${proSign}🇮🇷`;
+        const warpTag = `⚡ ${index + 1} - Warp ${proSign}🇮🇷`;
         proxyTags.push(warpTag);
 
-        const wowTag = `💦 ${index + 1} - WoW ${proSign}🌍`;
+        const wowTag = `⚡ ${index + 1} - WoW ${proSign}🌍`;
         chainTags.push(wowTag);
 
         selectorTags.push(warpTag, wowTag);
